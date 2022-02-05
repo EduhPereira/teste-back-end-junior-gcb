@@ -4,11 +4,13 @@ import Doctor from "../entities/Doctor";
 import axios, { AxiosInstance, AxiosResponse } from "axios";
 
 export const createDoctor = async (
-  req: Request,
-  res: Response,
-  next: NextFunction
+  nome: string,
+  crm: number,
+  telefone: number,
+  celular: number,
+  cep: number,
+  especialidade: string
 ) => {
-  const { nome, crm, telefone, celular, cep, especialidade } = req.body;
   try {
     const adress = await getAdress(cep);
     const doctor = getRepository(Doctor).create({
