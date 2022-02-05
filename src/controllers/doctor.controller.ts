@@ -45,7 +45,15 @@ export const update = async (
   req: Request,
   res: Response,
   next: NextFunction
-) => {};
+) => {
+  const { id } = req.params;
+  const response = await getRepository(Doctor).update(id, req.body);
+  const doctorUpdated = await getRepository(Doctor).findOne(id);
+  return res.json({
+    message: "doctor register updated",
+    doctorUpdated: doctorUpdated,
+  });
+};
 export const remove = async (
   req: Request,
   res: Response,
