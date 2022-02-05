@@ -47,7 +47,7 @@ export const update = async (
   next: NextFunction
 ) => {
   const { id } = req.params;
-  const response = await getRepository(Doctor).update(id, req.body);
+  await getRepository(Doctor).update(id, req.body);
   const doctorUpdated = await getRepository(Doctor).findOne(id);
   return res.json({
     message: "doctor register updated",
@@ -58,4 +58,9 @@ export const remove = async (
   req: Request,
   res: Response,
   next: NextFunction
-) => {};
+) => {
+  await getRepository(Doctor).softDelete(req.params["id"]);
+  return res.status(204).json({
+    message: "doctor register deleted",
+  });
+};
