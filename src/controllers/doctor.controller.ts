@@ -35,7 +35,12 @@ export const getOne = async (
   req: Request,
   res: Response,
   next: NextFunction
-) => {};
+) => {
+  const doctor = await getRepository(Doctor).findOne({
+    where: { id: req.params.id },
+  });
+  return res.json({ doctor });
+};
 export const update = async (
   req: Request,
   res: Response,
