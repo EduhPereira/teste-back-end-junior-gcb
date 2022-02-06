@@ -1,0 +1,242 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Teste Back End Júnior - GCB",
+    "description": "Aplicação NodeJS - CRUD de médicos utilizando Express, TypeORM, PostgreSQL, Yup, Typescript e Docker.",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/doctors": {
+      "post": {
+        "summary": "Register a new doctor",
+        "description": "Route responsible for registering a new doctor",
+        "tags": ["Doctors"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "nome": {
+                    "type": "string"
+                  },
+                  "crm": {
+                    "type": "number"
+                  },
+                  "telefone": {
+                    "type": "number"
+                  },
+                  "celular": {
+                    "type": "number"
+                  },
+                  "cep": {
+                    "type": "number"
+                  },
+                  "especialidade": {
+                    "type": "string"
+                  }
+                }
+              },
+              "examples": {
+                "doctor": {
+                  "value": {
+                    "nome": "Felipe",
+                    "crm": 1234567,
+                    "telefone": 31321862,
+                    "celular": 988296077,
+                    "cep": 12520380,
+                    "especialidade": "cardiologista"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "type": "object",
+                    "$ref": "#/components/schemas/Doctor"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "summary": "Get all doctors",
+        "description": "Route responsible for list all registered doctors",
+        "tags": ["Doctors"],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Doctor"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/doctors/{id}": {
+      "get": {
+        "summary": "Gets a doctor by id",
+        "description": "Route responsible for get a doctor by id",
+        "tags": ["Doctors"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "type": "object",
+                    "$ref": "#/components/schemas/Doctor"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "summary": "Edit a doctor",
+        "description": "Route responsible for edit a doctor",
+        "tags": ["Doctors"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "content": {
+                    "type": "string"
+                  },
+                  "createdAt": {
+                    "type": "string"
+                  },
+                  "author": {
+                    "type": "string"
+                  }
+                }
+              },
+              "examples": {
+                "task": {
+                  "value": {
+                    "name": "clean the house",
+                    "content": "clean and organize every room in the house",
+                    "createdAt": "2021-12-10T02:19:14.654Z",
+                    "author": "John Doe"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "type": "object",
+                    "$ref": "#/components/schemas/Doctor"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete a doctor",
+        "description": "Route responsible for deleting a doctor",
+        "tags": ["Doctors"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "OK"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Doctor": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "nome": {
+            "type": "string"
+          },
+          "crm": {
+            "type": "number"
+          },
+          "telefone": {
+            "type": "number"
+          },
+          "celular": {
+            "type": "number"
+          },
+          "cep": {
+            "type": "string"
+          },
+          "logradouro": {
+            "type": "string"
+          },
+          "complemento": {
+            "type": "string"
+          },
+          "bairro": {
+            "type": "string"
+          },
+          "localidade": {
+            "type": "string"
+          },
+          "uf": {
+            "type": "string"
+          },
+          "especialidade": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

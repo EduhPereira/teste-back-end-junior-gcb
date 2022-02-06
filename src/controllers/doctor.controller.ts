@@ -17,10 +17,7 @@ export const create = async (
       req.body.cep,
       req.body.especialidade
     );
-    return res.status(201).json({
-      message: "doctor registered",
-      doctor: doctor,
-    });
+    return res.status(201).json(doctor);
   } catch (error) {}
 };
 export const getAll = async (
@@ -29,7 +26,7 @@ export const getAll = async (
   next: NextFunction
 ) => {
   const doctors = await getRepository(Doctor).find();
-  return res.json({ doctors });
+  return res.json(doctors);
 };
 export const getOne = async (
   req: Request,
@@ -39,7 +36,7 @@ export const getOne = async (
   const doctor = await getRepository(Doctor).findOne({
     where: { id: req.params.id },
   });
-  return res.json({ doctor });
+  return res.json(doctor);
 };
 export const update = async (
   req: Request,
@@ -59,8 +56,6 @@ export const remove = async (
   res: Response,
   next: NextFunction
 ) => {
-  await getRepository(Doctor).softDelete(req.params["id"]);
-  return res.status(204).json({
-    message: "doctor register deleted",
-  });
+  await getRepository(Doctor).delete(req.params["id"]);
+  return res.sendStatus(204);
 };
