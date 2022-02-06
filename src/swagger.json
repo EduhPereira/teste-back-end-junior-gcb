@@ -64,7 +64,22 @@
             }
           },
           "400": {
-            "description": "Failed to create doctor",
+            "description": "Failed to create doctor - Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Failed to create doctor - CRM already exist",
             "content": {
               "application/json": {
                 "schema": {
@@ -122,6 +137,21 @@
                   "items": {
                     "type": "object",
                     "$ref": "#/components/schemas/Doctor"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Failed to get a doctor - Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
                   }
                 }
               }
@@ -185,6 +215,21 @@
                 }
               }
             }
+          },
+          "404": {
+            "description": "Failed to edit a doctor - Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
           }
         }
       },
@@ -202,6 +247,21 @@
         "responses": {
           "204": {
             "description": "OK"
+          },
+          "404": {
+            "description": "Failed to delete a doctor - Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
           }
         }
       }
