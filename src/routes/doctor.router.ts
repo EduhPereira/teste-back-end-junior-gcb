@@ -7,16 +7,18 @@ import {
   update,
 } from "../controllers/doctor.controller";
 import { validate } from "../middlewares/validation.middleware";
+import { idValidation } from "../middlewares/idValidation.middleware";
+import { crmValidation } from "../middlewares/crmValidation.middleware";
 import { DoctorSchema } from "../schemas/doctor.shema";
 
 const router = Router();
 
 export const DoctorRouter = () => {
-  router.post("", validate(DoctorSchema), create);
+  router.post("", validate(DoctorSchema), crmValidation, create);
   router.get("", getAll);
-  router.get("/:id", getOne);
-  router.put("/:id", update);
-  router.delete("/:id", remove);
+  router.get("/:id", idValidation, getOne);
+  router.put("/:id", idValidation, update);
+  router.delete("/:id", idValidation, remove);
 
   return router;
 };
