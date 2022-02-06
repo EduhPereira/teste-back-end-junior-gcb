@@ -2,6 +2,14 @@
 
 Aplicação NodeJS - CRUD de médicos utilizando Express, TypeORM, PostgreSQL, Yup, Typescript e Docker.
 
+## --------------------------------------------------------------------------------------------------
+
+## API Documentation
+
+### GET: localhost:3000/api/docs
+
+## --------------------------------------------------------------------------------------------------
+
 ## Endpoints
 
 ### POST: localhost:3000/api/doctors/register
@@ -10,8 +18,8 @@ Aplicação NodeJS - CRUD de médicos utilizando Express, TypeORM, PostgreSQL, Y
 {
     "nome":"John Doe",
     "crm":1234567,
-    "telefone":551131321862,
-    "celular":5511981070597,
+    "telefone":31321862,
+    "celular":981070597,
     "cep":12520380,
     "especialidade":"cardiologista"
 }
