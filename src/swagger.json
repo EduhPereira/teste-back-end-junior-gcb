@@ -57,9 +57,22 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "items": {
-                    "type": "object",
-                    "$ref": "#/components/schemas/Doctor"
+                  "type": "object",
+                  "$ref": "#/components/schemas/Doctor"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Failed to create doctor",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
                   }
                 }
               }

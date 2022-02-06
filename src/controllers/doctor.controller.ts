@@ -8,17 +8,15 @@ export const create = async (
   res: Response,
   next: NextFunction
 ) => {
-  try {
-    const doctor = await createDoctor(
-      req.body.nome,
-      req.body.crm,
-      req.body.telefone,
-      req.body.celular,
-      req.body.cep,
-      req.body.especialidade
-    );
-    return res.status(201).json(doctor);
-  } catch (error) {}
+  const doctor = await createDoctor(
+    req.body.nome,
+    req.body.crm,
+    req.body.telefone,
+    req.body.celular,
+    req.body.cep,
+    req.body.especialidade
+  );
+  return res.status(201).json(doctor);
 };
 export const getAll = async (
   req: Request,
