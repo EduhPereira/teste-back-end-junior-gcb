@@ -8,14 +8,17 @@ export const create = async (
   res: Response,
   next: NextFunction
 ) => {
-  const especialidade = await createEspeciality(req.body.nome);
-  return res.status(201).json(especialidade);
+  const especiality = await createEspeciality(req.body.nome);
+  return res.status(201).json(especiality);
 };
 export const getAll = async (
   req: Request,
   res: Response,
   next: NextFunction
-) => {};
+) => {
+  const especialidades = await getRepository(Especiality).find();
+  return res.json(especialidades);
+};
 export const getOne = async (
   req: Request,
   res: Response,
