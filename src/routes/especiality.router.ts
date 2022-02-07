@@ -6,11 +6,13 @@ import {
   remove,
   update,
 } from "../controllers/especiality.controller";
+import { validate } from "../middlewares/validation.middleware";
+import { EspecialitySchema } from "../schemas/especiality.schema";
 
 const router = Router();
 
 export const EspecialityRouter = () => {
-  router.post("", create);
+  router.post("", validate(EspecialitySchema), create);
   router.get("", getAll);
   router.get("/:id", getOne);
   router.put("/:id", update);
