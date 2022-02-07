@@ -43,4 +43,7 @@ export const remove = async (
   req: Request,
   res: Response,
   next: NextFunction
-) => {};
+) => {
+  await getRepository(Especiality).delete(req.params.id);
+  return res.sendStatus(204);
+};
