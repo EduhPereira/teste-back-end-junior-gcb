@@ -16,14 +16,19 @@ export const getAll = async (
   res: Response,
   next: NextFunction
 ) => {
-  const especialidades = await getRepository(Especiality).find();
-  return res.json(especialidades);
+  const especialities = await getRepository(Especiality).find();
+  return res.json(especialities);
 };
 export const getOne = async (
   req: Request,
   res: Response,
   next: NextFunction
-) => {};
+) => {
+  const especiality = await getRepository(Especiality).findOne({
+    where: { id: req.params.id },
+  });
+  return res.json(especiality);
+};
 export const update = async (
   req: Request,
   res: Response,
