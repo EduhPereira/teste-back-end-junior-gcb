@@ -1,5 +1,4 @@
 import { getRepository } from "typeorm";
-import { Request, Response, NextFunction } from "express";
 import Doctor from "../entities/Doctor";
 import axios, { AxiosInstance, AxiosResponse } from "axios";
 
