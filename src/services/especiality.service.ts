@@ -5,4 +5,6 @@ export const createEspeciality = async (nome: string) => {
   const especialidade = getRepository(Especiality).create({
     nome,
   });
+  await getRepository(Especiality).save(especialidade);
+  return especialidade;
 };
