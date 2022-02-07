@@ -44,10 +44,7 @@ export const update = async (
   const { id } = req.params;
   await getRepository(Doctor).update(id, req.body);
   const doctorUpdated = await getRepository(Doctor).findOne(id);
-  return res.json({
-    message: "doctor register updated",
-    doctorUpdated: doctorUpdated,
-  });
+  return res.json(doctorUpdated);
 };
 export const remove = async (
   req: Request,

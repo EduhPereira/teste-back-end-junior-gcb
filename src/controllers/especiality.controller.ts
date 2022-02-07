@@ -33,7 +33,12 @@ export const update = async (
   req: Request,
   res: Response,
   next: NextFunction
-) => {};
+) => {
+  const { id } = req.params;
+  await getRepository(Especiality).update(id, req.body);
+  const especialityUpdated = await getRepository(Especiality).findOne(id);
+  return res.json(especialityUpdated);
+};
 export const remove = async (
   req: Request,
   res: Response,
