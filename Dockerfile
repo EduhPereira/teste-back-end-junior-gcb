@@ -4,6 +4,6 @@ WORKDIR /code
 
 COPY . /code/
 
-RUN npm install
+RUN yarn install
 
-CMD [ "npm", "run", "dev" ]
+CMD "npm run dev"
