@@ -6,4 +6,4 @@ COPY . /code/
 
 RUN yarn install
 
-CMD "npm run dev"
+CMD "yarn dev"
