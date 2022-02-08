@@ -14,4 +14,11 @@ const devEnv = {
   },
 };
 
-module.exports = devEnv;
+const testEnv = {
+  type: "sqlite",
+  database: ":memory:",
+  entities: ["./src/entities/**/*.ts"],
+  synchronize: true,
+};
+
+module.exports = process.env.NODE_ENV === "test" ? testEnv : devEnv;

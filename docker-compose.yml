@@ -19,9 +19,3 @@ services:
     environment:
       - POSTGRES_PASSWORD=password
       - POSTGRES_DB=gcb_db
-
-  adminer:
-    image: adminer
-    restart: always
-    ports:
-      - 8080:8080
