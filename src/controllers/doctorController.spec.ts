@@ -12,31 +12,34 @@ describe("Doctor Controler Test", () => {
   });
 
   let doctorId = "";
+  let doctorPayload = {
+    nome: "John Doe",
+    crm: 1234567,
+    telefone: 31321862,
+    celular: 988296077,
+    cep: 12520380,
+    especialidade: "Cardiologia",
+  };
 
   it("Should able to register a new doctor", async () => {
-    const response = await request(app).post("/doctors").send({
+    const response = await request(app).post("/doctors").send(doctorPayload);
+
+    doctorId = response.body.id;
+
+    expect(response.body).toEqual({
+      id: response.body.id,
       nome: "John Doe",
       crm: 1234567,
       telefone: 31321862,
       celular: 988296077,
-      cep: 12520380,
+      cep: "12520-380",
+      logradouro: "Rua Joaquim Pinto Cabral",
+      complemento: "",
+      bairro: "Jardim Primavera",
+      localidade: "Guaratinguetá",
+      uf: "SP",
       especialidade: "Cardiologia",
     });
-
-    doctorId = response.body.id;
-
-    expect(response.body).toHaveProperty("id");
-    expect(response.body).toHaveProperty("nome");
-    expect(response.body).toHaveProperty("crm");
-    expect(response.body).toHaveProperty("telefone");
-    expect(response.body).toHaveProperty("celular");
-    expect(response.body).toHaveProperty("cep");
-    expect(response.body).toHaveProperty("logradouro");
-    expect(response.body).toHaveProperty("complemento");
-    expect(response.body).toHaveProperty("bairro");
-    expect(response.body).toHaveProperty("localidade");
-    expect(response.body).toHaveProperty("uf");
-    expect(response.body).toHaveProperty("especialidade");
     expect(response.status).toBe(201);
   });
 
